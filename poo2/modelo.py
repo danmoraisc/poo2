@@ -1,3 +1,6 @@
+from abc import ABC
+#abastract base classes
+
 class Programa:
     def __init__(self, nome, ano):
         self._nome = nome.title()
@@ -45,12 +48,18 @@ class Playlist:
         self._nome = nome
         self._programas = programas
 
+    def __getitem__(self, item):
+        return self._programas[item]
+
+    def __len__(self):
+        return len(self._programas)
+
     def tamanho(self):
         return len(self._programas)
 
-    @property
-    def listagem(self):
-        return self._programas
+    # @property
+    # def listagem(self):
+    #     return self._programas
 
     @property
     def tamanho(self):
@@ -79,9 +88,9 @@ filmes_e_series = [vingadores, atlanta, demolidor, tmep]
 
 playlist_fim_de_semana = Playlist('fim de semana', filmes_e_series)
 
-print(f"Tamanho da Playlist: {len(playlist_fim_de_semana.listagem)}")
+print(f"Tamanho da Playlist: {len(playlist_fim_de_semana)}")
 
-for programa in playlist_fim_de_semana.listagem:
+for programa in playlist_fim_de_semana:
     print('\n',programa)
 
 
